@@ -1,200 +1,495 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>NeuralFlow — Open-source infrastructure for AI agent workflows</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap"
-    />
-    <link rel="stylesheet" href="hark.css" />
-    <link rel="stylesheet" href="hark-hero.css" />
-    <style>
-      /* Fill wide screens: hero spans the viewport (minus the gutter), sections and footer cap at 1600px. */
-      :root { --page-max: 100%; }
-      .main > .section,
-      .page > .foot { width: 100%; max-width: min(1600px, 100%); margin-inline: auto; }
-    </style>
-  </head>
-  <body>
-    <div class="page" id="top">
-      <header class="nav glass" data-auto></header>
-      <main class="main">
-        <section class="hero">
-          <img class="hero__img" src="neuralflow-hero.jpg" alt="Glowing streams of data flowing through an abstract neural network" />
-          <div class="hero__copy">
-            <p class="hero__eyebrow">NeuralFlow · Open source</p>
-            <h1>Orchestrate AI agents. Ship LLM pipelines that flow.</h1>
-            <p class="hero__sub">An open-source, high-performance framework for building, chaining and running autonomous AI agent workflows.</p>
-            <p class="hero__meta">neural-flow.dev · For developers, early adopters and partners</p>
-          </div>
-          <aside class="callout" aria-label="Next step">
-            <p class="callout__head">Next step</p>
-            <p class="callout__lead"><strong>Building with agents?</strong> Talk to us about early access or partnering.</p>
-            <div class="links">
-              <a class="btn" href="mailto:contact@neuralflow.eu.org">Get in touch</a>
-              <a class="btn" href="https://www.linkedin.com/in/amith-viswas-reddy" target="_blank" rel="noopener">Connect with the founder</a>
-            </div>
-          </aside>
-        </section>
+<html lang="en" data-theme="aurora">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuralFlow — Orchestrate AI agents</title>
+  <meta name="description" content="NeuralFlow is an open-source, high-performance framework for building, chaining and running autonomous AI agent workflows and LLM pipelines." />
+  <meta name="theme-color" content="#0B1020" />
+  <link rel="canonical" href="https://neural-flow.dev/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="NeuralFlow" />
+  <meta property="og:title" content="NeuralFlow — Orchestrate AI agents. Ship LLM pipelines that flow." />
+  <meta property="og:description" content="An open-source, high-performance framework for building, chaining and running autonomous AI agent workflows." />
+  <meta property="og:url" content="https://neural-flow.dev/" />
+  <meta property="og:image" content="https://neural-flow.dev/neuralflow-hero.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322D3EE'/%3E%3Cstop offset='1' stop-color='%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='%230B1020'/%3E%3Cpath d='M6 20c4 0 5-8 10-8s6 8 10 8' fill='none' stroke='url(%23g)' stroke-width='2.6' stroke-linecap='round'/%3E%3Ccircle cx='6' cy='20' r='3' fill='%2322D3EE'/%3E%3Ccircle cx='16' cy='12' r='3' fill='%2355A0F3'/%3E%3Ccircle cx='26' cy='20' r='3' fill='%238B5CF6'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" />
+  <link rel="stylesheet" href="neuralflow.css" />
+  <script>try{var t=localStorage.getItem("nf-theme");if(["aurora","sunset","mint","neon"].indexOf(t)>-1)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+</head>
+<body>
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="nf-grad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" class="stop-a" />
+        <stop offset="1" class="stop-b" />
+      </linearGradient>
+      <symbol id="nf-logo" viewBox="0 0 32 32">
+        <path d="M6 20c4 0 5-8 10-8s6 8 10 8" fill="none" stroke="url(#nf-grad)" stroke-width="2.6" stroke-linecap="round" />
+        <circle cx="6" cy="20" r="3" class="logo-n1" />
+        <circle cx="16" cy="12" r="3" fill="url(#nf-grad)" />
+        <circle cx="26" cy="20" r="3" class="logo-n3" />
+      </symbol>
+    </defs>
+  </svg>
 
-        <section class="section" id="what" data-nav="What we do">
-          <div class="head">
-            <p class="head__eyebrow">What we do</p>
-            <h2>One framework for agents, pipelines and the code behind them.</h2>
-          </div>
-          <div class="cards">
-            <div>
-              <h3>Agent orchestration</h3>
-              <p>Define multi-agent workflows where agents plan, hand off tasks and call tools.</p>
-            </div>
-            <div>
-              <h3>LLM pipelines</h3>
-              <p>Chain prompts, retrieval and model calls into reliable, repeatable pipelines.</p>
-            </div>
-            <div>
-              <h3>Open source first</h3>
-              <p>Transparent code, community-driven, no lock-in to any single model provider.</p>
-            </div>
-          </div>
-        </section>
+  <a class="skip" href="#main">Skip to content</a>
 
-        <section class="section" id="why" data-nav="Why">
-          <div class="head">
-            <p class="head__eyebrow">Why NeuralFlow</p>
-            <h2>Fast, open and easy to see inside.</h2>
-          </div>
-          <div class="cards">
-            <div>
-              <h3>Built for performance</h3>
-              <p>High-throughput orchestration for agent workflows in production.</p>
-            </div>
-            <div>
-              <h3>Model-agnostic</h3>
-              <p>Works with any major LLM provider.</p>
-            </div>
-            <div>
-              <h3>Developer-friendly</h3>
-              <p>A Python/JavaScript-style API that feels familiar from day one.</p>
-            </div>
-            <div>
-              <h3>Observability built in</h3>
-              <p>Trace each step of a workflow.</p>
-            </div>
-            <div>
-              <h3>Extensible</h3>
-              <p>Add plugins and custom tools.</p>
-            </div>
-          </div>
-        </section>
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="logo" href="#/home" aria-label="NeuralFlow home">
+        <span class="logo__mark"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#nf-logo" /></svg></span>
+        <span class="logo__word">NeuralFlow</span>
+      </a>
 
-        <section class="section" id="how" data-nav="How it works">
-          <div class="head">
-            <p class="head__eyebrow">How it works</p>
-            <h2>Three steps from idea to running workflow.</h2>
-          </div>
-          <div class="steps">
-            <article class="step">
-              <div class="step__intro"><p class="step__num">01</p><p class="step__eyebrow">Define</p></div>
-              <div><h3>Define your agents and tools</h3><p>Describe what each agent does and which tools it can call.</p></div>
-            </article>
-            <article class="step">
-              <div class="step__intro"><p class="step__num">02</p><p class="step__eyebrow">Connect</p></div>
-              <div><h3>Connect them into a flow</h3><p>Wire agents, prompts and retrieval into one pipeline.</p></div>
-            </article>
-            <article class="step">
-              <div class="step__intro"><p class="step__num">03</p><p class="step__eyebrow">Run</p></div>
-              <div><h3>Run, monitor and iterate</h3><p>Trace every step, find what to improve, and ship again.</p></div>
-            </article>
-          </div>
-        </section>
+      <nav class="nav__links" id="nav-links" aria-label="Main">
+        <a href="#/home" data-link="home">Home</a>
+        <a href="#/product" data-link="product">Product</a>
+        <a href="#/use-cases" data-link="use-cases">Use cases</a>
+        <a href="#/about" data-link="about">About</a>
+        <a href="#/roadmap" data-link="roadmap">Roadmap</a>
+        <a href="#/contact" data-link="contact">Contact</a>
+        <a class="btn btn--primary nav__mobile-cta" href="#/contact">Get early access</a>
+      </nav>
 
-        <section class="section" id="use-cases" data-nav="Use cases">
-          <div class="head">
-            <p class="head__eyebrow">Use cases</p>
-            <h2>Where agent workflows pay off.</h2>
+      <div class="nav__actions">
+        <div class="theme">
+          <button class="icon-btn" id="theme-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="theme-pop" aria-label="Change colour theme">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.8 1.8-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.8-1.7 1.7-1.7H16a5 5 0 0 0 5-5C21 6.4 17 3 12 3Z" fill="none" stroke="currentColor" stroke-width="1.7" /><circle cx="7.5" cy="11" r="1.3" fill="currentColor" /><circle cx="10" cy="7" r="1.3" fill="currentColor" /><circle cx="14.5" cy="7" r="1.3" fill="currentColor" /><circle cx="17" cy="10.5" r="1.3" fill="currentColor" /></svg>
+          </button>
+          <div class="theme__pop" id="theme-pop" role="menu" aria-label="Colour themes" hidden>
+            <p class="theme__title">Theme</p>
+            <button type="button" role="menuitemradio" class="swatch" data-theme-set="aurora" aria-checked="true"><span class="swatch__dot" style="--s1:#22D3EE;--s2:#8B5CF6;--sb:#0B1020"></span>Aurora</button>
+            <button type="button" role="menuitemradio" class="swatch" data-theme-set="sunset" aria-checked="false"><span class="swatch__dot" style="--s1:#FB7185;--s2:#F59E0B;--sb:#1A0B16"></span>Sunset</button>
+            <button type="button" role="menuitemradio" class="swatch" data-theme-set="mint" aria-checked="false"><span class="swatch__dot" style="--s1:#10B981;--s2:#14B8A6;--sb:#F6FAF8"></span>Mint</button>
+            <button type="button" role="menuitemradio" class="swatch" data-theme-set="neon" aria-checked="false"><span class="swatch__dot" style="--s1:#A3E635;--s2:#EC4899;--sb:#07070A"></span>Neon</button>
           </div>
-          <div class="cards">
-            <div><h3>Customer support</h3><p>Customer support automation.</p></div>
-            <div><h3>Research assistants</h3><p>Research and document analysis assistants.</p></div>
-            <div><h3>Process automation</h3><p>RPA-style business process automation with AI.</p></div>
-            <div><h3>Developer copilots</h3><p>Internal developer copilots.</p></div>
-          </div>
-        </section>
-
-        <section class="section" id="founder" data-nav="Founder">
-          <div class="head">
-            <p class="head__eyebrow">Founder</p>
-            <h2>Amith Viswas Reddy Dwarampudi</h2>
-            <p class="head__sub">Founder, NeuralFlow</p>
-          </div>
-          <div class="pair">
-            <div class="cards">
-              <div>
-                <h3>Background</h3>
-                <ul>
-                  <li>Web development: HTML/CSS/JavaScript, Django, Next.js/React</li>
-                  <li>Data visualisation with Tableau</li>
-                  <li>UiPath RPA certified</li>
-                  <li>Salesforce trained</li>
-                </ul>
-              </div>
-            </div>
-            <div class="cards">
-              <div>
-                <h3>Languages</h3>
-                <p><span class="pill">English</span> <span class="pill">Hindi</span> <span class="pill">Japanese</span> <span class="pill">Telugu</span></p>
-                <div class="links">
-                  <a class="btn" href="https://www.linkedin.com/in/amith-viswas-reddy" target="_blank" rel="noopener">LinkedIn</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" id="roadmap" data-nav="Roadmap">
-          <div class="head">
-            <p class="head__eyebrow">Status</p>
-            <h2>Early days, building the core.</h2>
-          </div>
-          <ol class="timeline">
-            <li class="is-current">
-              <p class="timeline__when">Now</p>
-              <div class="timeline__what">Early development and building the core framework.</div>
-              <p><span class="chip chip--solid">In progress</span></p>
-            </li>
-            <li>
-              <p class="timeline__when">Next</p>
-              <div class="timeline__what">Public open-source release and documentation.</div>
-            </li>
-            <li>
-              <p class="timeline__when">Later</p>
-              <div class="timeline__what">Community plugins and hosted tooling.</div>
-            </li>
-          </ol>
-        </section>
-
-        <section class="section" id="contact" data-nav="Contact">
-          <div class="head">
-            <h2>Want early access or to collaborate?</h2>
-          </div>
-          <aside class="callout" aria-label="Contact">
-            <p class="callout__lead"><strong>Email us</strong> at <a class="link" href="mailto:contact@neuralflow.eu.org">contact@neuralflow.eu.org</a>, or connect with the founder on LinkedIn.</p>
-            <div class="links">
-              <a class="btn" href="mailto:contact@neuralflow.eu.org">Get in touch</a>
-              <a class="btn" href="https://www.linkedin.com/in/amith-viswas-reddy" target="_blank" rel="noopener">LinkedIn</a>
-            </div>
-          </aside>
-        </section>
-      </main>
-      <footer class="foot">
-        <p>© 2026 NeuralFlow · neural-flow.dev</p>
-        <nav aria-label="Back to sections" data-auto></nav>
-      </footer>
+        </div>
+        <a class="btn btn--primary nav__cta" href="#/contact">Get early access</a>
+        <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+      </div>
     </div>
-    <script src="hark.js"></script>
-  </body>
+  </header>
+  <div class="scrim" id="scrim" hidden></div>
+
+  <main id="main" tabindex="-1">
+    <!-- HOME -->
+    <section class="route" data-route="home" data-title="Home" aria-label="Home">
+      <div class="hero" id="hero">
+        <img class="hero__img" src="neuralflow-hero.jpg" alt="" />
+        <div class="hero__overlay"></div>
+        <div class="blob blob--1"></div><div class="blob blob--2"></div><div class="blob blob--3"></div>
+        <div class="hero__glow"></div>
+        <div class="hero__inner wrap">
+          <p class="eyebrow"><span class="eyebrow__dot"></span>Open-source · AI infrastructure</p>
+          <h1 class="hero__title">Orchestrate AI agents. <span class="grad-text">Ship LLM pipelines that flow.</span></h1>
+          <p class="hero__sub">An open-source, high-performance framework for building, chaining and running autonomous AI agent workflows.</p>
+          <p class="typer" aria-label="Build agents, pipelines, workflows and copilots">Build <span class="typer__word" id="typer" aria-hidden="true">agents</span><span class="typer__caret" aria-hidden="true"></span></p>
+          <div class="btn-row">
+            <a class="btn btn--primary btn--lg" href="#/product">Explore the product</a>
+            <a class="btn btn--ghost btn--lg" href="#/contact">Get early access</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <div class="counters reveal" aria-label="What we are aiming for">
+          <div class="counter"><span class="counter__fig"><span data-count="10">0</span>x</span><span class="counter__label">faster pipeline setup <em>(goal)</em></span></div>
+          <div class="counter"><span class="counter__fig"><span data-count="100">0</span>%</span><span class="counter__label">open source</span></div>
+          <div class="counter"><span class="counter__fig" data-scramble="Any">Any</span><span class="counter__label">LLM provider <em>(by design)</em></span></div>
+          <div class="counter"><span class="counter__fig"><span data-count="4">0</span></span><span class="counter__label">core modules</span></div>
+        </div>
+        <p class="note">Targets we're building towards, not benchmarks yet.</p>
+
+        <div class="sec-head reveal">
+          <p class="kicker">Why NeuralFlow</p>
+          <h2>One framework from first agent to production pipeline.</h2>
+        </div>
+        <div class="grid grid--3">
+          <article class="card tilt reveal">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="5" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M7.3 11 16.7 6M7.3 13l9.4 5"/></svg></div>
+            <h3>Agent orchestration</h3>
+            <p>Coordinate planners, workers and tools as one flow, with clear hand-offs and retries.</p>
+            <a class="more" href="#/product">Learn more <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="card tilt reveal">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h6l3 5 3-5h6M3 17h6l3-5 3 5h6"/></svg></div>
+            <h3>LLM pipelines</h3>
+            <p>Chain load, prompt, validate and save steps into pipelines that batch and recover.</p>
+            <a class="more" href="#/product">Learn more <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="card tilt reveal">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></div>
+            <h3>Open source first</h3>
+            <p>Built in the open: read the code, run it anywhere, shape where it goes next.</p>
+            <a class="more" href="#/product">Learn more <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+
+        <div class="sec-head reveal">
+          <p class="kicker">Try it</p>
+          <h2>Watch a flow run, node by node.</h2>
+          <p class="sec-head__sub">A mini demo of how a request moves through a NeuralFlow graph.</p>
+        </div>
+        <div class="builder reveal" id="builder">
+          <div class="builder__graph">
+            <div class="fnode" data-node="0"><span class="fnode__tag">01</span><strong>Input</strong><small>User request</small></div>
+            <div class="fedge" data-edge="0"><span class="fedge__pulse"></span></div>
+            <div class="fnode" data-node="1"><span class="fnode__tag">02</span><strong>Planner Agent</strong><small>Breaks down the task</small></div>
+            <div class="fedge" data-edge="1"><span class="fedge__pulse"></span></div>
+            <div class="fnode" data-node="2"><span class="fnode__tag">03</span><strong>Tool Call</strong><small>search_docs()</small></div>
+            <div class="fedge" data-edge="2"><span class="fedge__pulse"></span></div>
+            <div class="fnode" data-node="3"><span class="fnode__tag">04</span><strong>Output</strong><small>Final answer</small></div>
+          </div>
+          <div class="console">
+            <div class="console__bar"><span></span><span></span><span></span><p>neuralflow run demo-flow</p></div>
+            <ol class="console__log" id="console-log" aria-live="polite"><li class="console__idle">Press “Run flow” to start.</li></ol>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn--primary" type="button" id="run-flow">Run flow</button>
+            <button class="btn btn--ghost" type="button" id="reset-flow">Reset</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT -->
+    <section class="route" data-route="product" data-title="Product" aria-label="Product" hidden>
+      <div class="page-hero wrap">
+        <p class="kicker">Product</p>
+        <h1>Four modules. <span class="grad-text">One flowing API.</span></h1>
+        <p class="lead">Orchestrate agents, build pipelines, see every step and extend it all with plugins.</p>
+      </div>
+      <div class="wrap">
+        <div class="tabs reveal">
+          <div class="tabs__list" role="tablist" aria-label="Product modules">
+            <button role="tab" id="tab-orch" aria-controls="panel-orch" aria-selected="true" class="tab">Orchestration</button>
+            <button role="tab" id="tab-pipe" aria-controls="panel-pipe" aria-selected="false" tabindex="-1" class="tab">Pipelines</button>
+            <button role="tab" id="tab-obs" aria-controls="panel-obs" aria-selected="false" tabindex="-1" class="tab">Observability</button>
+            <button role="tab" id="tab-plug" aria-controls="panel-plug" aria-selected="false" tabindex="-1" class="tab">Plugins</button>
+            <span class="tabs__ink" aria-hidden="true"></span>
+          </div>
+
+          <div class="tabpanel" role="tabpanel" id="panel-orch" aria-labelledby="tab-orch">
+            <div class="tabpanel__copy">
+              <h3>Agents that work together</h3>
+              <p>Define agents with a model and tools, then chain or branch them into a flow that plans, acts and answers.</p>
+              <ul class="ticks"><li>Planner, worker and reviewer patterns</li><li>Typed tools from plain Python functions</li><li>Retries, timeouts and hand-offs per step</li></ul>
+            </div>
+            <div class="code"><div class="code__bar"><span>orchestration.py</span><button class="copy-btn" type="button">Copy</button></div><pre><code>from neuralflow import Flow, Agent, tool
+
+@tool
+def search_docs(query: str) -&gt; list[str]:
+    return index.search(query, k=5)
+
+planner = Agent("planner", model="any-llm", tools=[search_docs])
+writer = Agent("writer", model="any-llm")
+
+flow = Flow("answer-question")
+flow.chain(planner, writer)
+
+result = flow.run("How do refunds work?")
+print(result.output)</code></pre></div>
+          </div>
+
+          <div class="tabpanel" role="tabpanel" id="panel-pipe" aria-labelledby="tab-pipe" hidden>
+            <div class="tabpanel__copy">
+              <h3>Pipelines for real data</h3>
+              <p>Compose load, prompt, validate and save steps into a pipeline that runs in batches and picks up where it failed.</p>
+              <ul class="ticks"><li>Batching and concurrency controls</li><li>Schema validation on every LLM output</li><li>Automatic retries and resumable runs</li></ul>
+            </div>
+            <div class="code"><div class="code__bar"><span>pipeline.py</span><button class="copy-btn" type="button">Copy</button></div><pre><code>from neuralflow import Pipeline, steps
+
+pipe = (
+    Pipeline("enrich-leads")
+    .add(steps.Load("leads.csv"))
+    .add(steps.LLM("Summarise each company", model="any-llm"))
+    .add(steps.Validate(schema=LeadSummary))
+    .add(steps.Save("warehouse.leads"))
+)
+
+pipe.run(batch_size=32, retries=2)</code></pre></div>
+          </div>
+
+          <div class="tabpanel" role="tabpanel" id="panel-obs" aria-labelledby="tab-obs" hidden>
+            <div class="tabpanel__copy">
+              <h3>See every step</h3>
+              <p>Every run produces a trace: which agent did what, which tools it called, how long it took and what it cost.</p>
+              <ul class="ticks"><li>Step-level traces with latency and tokens</li><li>Export to console, files or your own stack</li><li>Replay a run to debug it</li></ul>
+            </div>
+            <div class="code"><div class="code__bar"><span>observe.py</span><button class="copy-btn" type="button">Copy</button></div><pre><code>from neuralflow import Flow
+from neuralflow.observe import Tracer
+
+flow = Flow.load("answer-question")
+tracer = Tracer(export="console")
+
+with tracer.session("debug-run"):
+    run = flow.run("Draft a reply to ticket #4821")
+
+for span in run.trace:
+    print(span.step, span.latency_ms, span.tokens)</code></pre></div>
+          </div>
+
+          <div class="tabpanel" role="tabpanel" id="panel-plug" aria-labelledby="tab-plug" hidden>
+            <div class="tabpanel__copy">
+              <h3>Extend anything</h3>
+              <p>Plugins hook into the flow lifecycle, so you can add tools, providers, storage or alerts without forking.</p>
+              <ul class="ticks"><li>Lifecycle hooks for steps and runs</li><li>Bring your own model provider</li><li>Share plugins as regular packages</li></ul>
+            </div>
+            <div class="code"><div class="code__bar"><span>plugin.py</span><button class="copy-btn" type="button">Copy</button></div><pre><code>from neuralflow import Flow
+from neuralflow.plugins import Plugin, register
+
+@register
+class SlackNotify(Plugin):
+    name = "slack-notify"
+
+    def on_step_end(self, step, result):
+        self.post(f"{step.name} finished in {result.ms} ms")
+
+flow = Flow.load("enrich-leads", plugins=["slack-notify"])</code></pre></div>
+          </div>
+        </div>
+
+        <div class="sec-head reveal">
+          <p class="kicker">How it works</p>
+          <h2>From idea to running flow in three steps.</h2>
+        </div>
+        <ol class="grid grid--3 how">
+          <li class="card tilt reveal"><span class="how__num">01</span><h3>Define your agents and tools</h3><p>Pick a model, describe the role, hand it plain Python functions as tools.</p></li>
+          <li class="card tilt reveal"><span class="how__num">02</span><h3>Connect them into a flow</h3><p>Chain, branch or loop agents and pipeline steps into one graph.</p></li>
+          <li class="card tilt reveal"><span class="how__num">03</span><h3>Run, monitor and iterate</h3><p>Run locally or at scale, read the trace, then tune prompts and steps.</p></li>
+        </ol>
+
+        <div class="sec-head reveal">
+          <p class="kicker">Under the hood</p>
+          <h2>Built for the way developers actually ship.</h2>
+        </div>
+        <ul class="features">
+          <li class="feature reveal"><span class="feature__ic">⚡</span><div><h3>Built for performance</h3><p>Async by default, with batching and concurrency where it counts.</p></div></li>
+          <li class="feature reveal"><span class="feature__ic">◎</span><div><h3>Model-agnostic</h3><p>Designed to work with any LLM provider, hosted or local.</p></div></li>
+          <li class="feature reveal"><span class="feature__ic">{ }</span><div><h3>Developer-friendly API</h3><p>Small, typed, readable. Flows are just Python.</p></div></li>
+          <li class="feature reveal"><span class="feature__ic">◉</span><div><h3>Observability built in</h3><p>Traces, timings and token counts for every step, out of the box.</p></div></li>
+          <li class="feature reveal"><span class="feature__ic">✚</span><div><h3>Extensible with plugins</h3><p>Hook into the lifecycle to add tools, providers and integrations.</p></div></li>
+        </ul>
+        <div class="cta-band reveal">
+          <h2>Want to build with it first?</h2>
+          <a class="btn btn--primary btn--lg" href="#/contact">Get early access</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section class="route" data-route="use-cases" data-title="Use cases" aria-label="Use cases" hidden>
+      <div class="page-hero wrap">
+        <p class="kicker">Use cases</p>
+        <h1>What teams will <span class="grad-text">build with NeuralFlow.</span></h1>
+        <p class="lead">Filter by area, then open a card to see an example workflow.</p>
+      </div>
+      <div class="wrap">
+        <div class="chips reveal" role="group" aria-label="Filter use cases">
+          <button class="fchip is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="fchip" type="button" data-filter="support" aria-pressed="false">Support</button>
+          <button class="fchip" type="button" data-filter="research" aria-pressed="false">Research</button>
+          <button class="fchip" type="button" data-filter="automation" aria-pressed="false">Automation</button>
+          <button class="fchip" type="button" data-filter="developer" aria-pressed="false">Developer</button>
+        </div>
+        <div class="grid grid--3 uc-grid" id="uc-grid">
+          <article class="card uc tilt reveal" data-cat="support">
+            <span class="badge">Support</span>
+            <h3>Customer support automation</h3>
+            <p>Triage tickets, draft grounded replies and escalate what needs a human.</p>
+            <button class="uc__open" type="button">See example workflow <span aria-hidden="true">→</span></button>
+            <template><ol class="wf"><li><b>Classify</b> the incoming ticket by intent and urgency.</li><li><b>Retrieve</b> matching help-centre articles and past replies.</li><li><b>Draft</b> a reply grounded in those sources.</li><li><b>Route</b>: send low-risk replies for quick approval, escalate the rest.</li></ol></template>
+          </article>
+          <article class="card uc tilt reveal" data-cat="research">
+            <span class="badge">Research</span>
+            <h3>Research &amp; document analysis</h3>
+            <p>Read long PDFs and reports, extract facts and write cited summaries.</p>
+            <button class="uc__open" type="button">See example workflow <span aria-hidden="true">→</span></button>
+            <template><ol class="wf"><li><b>Ingest</b> PDFs and split them into sections.</li><li><b>Extract</b> key claims, figures and dates per section.</li><li><b>Cross-check</b> claims across documents with a reviewer agent.</li><li><b>Summarise</b> into a brief with citations back to pages.</li></ol></template>
+          </article>
+          <article class="card uc tilt reveal" data-cat="automation">
+            <span class="badge">Automation</span>
+            <h3>RPA-style business process automation</h3>
+            <p>Let agents handle the judgement steps between your existing systems.</p>
+            <button class="uc__open" type="button">See example workflow <span aria-hidden="true">→</span></button>
+            <template><ol class="wf"><li><b>Watch</b> an inbox or folder for new invoices.</li><li><b>Read</b> each invoice and extract vendor, amount and due date.</li><li><b>Validate</b> against purchase orders and flag mismatches.</li><li><b>Post</b> approved entries to the finance system and log the run.</li></ol></template>
+          </article>
+          <article class="card uc tilt reveal" data-cat="developer">
+            <span class="badge">Developer</span>
+            <h3>Internal developer copilots</h3>
+            <p>Answer questions about your codebase, runbooks and internal APIs.</p>
+            <button class="uc__open" type="button">See example workflow <span aria-hidden="true">→</span></button>
+            <template><ol class="wf"><li><b>Index</b> repos, docs and runbooks on a schedule.</li><li><b>Plan</b>: the planner agent decides which sources a question needs.</li><li><b>Search</b> code and docs with tool calls.</li><li><b>Answer</b> with snippets and links to the exact files.</li></ol></template>
+          </article>
+          <article class="card uc tilt reveal" data-cat="automation developer">
+            <span class="badge">Automation · Developer</span>
+            <h3>Data pipeline enrichment</h3>
+            <p>Add LLM steps to data pipelines: classify, tag, summarise and validate rows.</p>
+            <button class="uc__open" type="button">See example workflow <span aria-hidden="true">→</span></button>
+            <template><ol class="wf"><li><b>Load</b> a batch of rows from the warehouse.</li><li><b>Enrich</b> each row with an LLM step (category, summary, tags).</li><li><b>Validate</b> outputs against a schema; retry failures.</li><li><b>Write</b> enriched rows back and record a trace per batch.</li></ol></template>
+          </article>
+          <article class="card uc tilt reveal" data-cat="support automation">
+            <span class="badge">Support · Automation</span>
+            <h3>Sales &amp; CRM assistants</h3>
+            <p>Research leads, prep account briefs and keep the CRM up to date.</p>
+            <button class="uc__open" type="button">See example workflow <span aria-hidden="true">→</span></button>
+            <template><ol class="wf"><li><b>Pick up</b> new leads from the CRM.</li><li><b>Research</b> each company from public sources.</li><li><b>Write</b> a short account brief and a suggested first message.</li><li><b>Update</b> the CRM record and notify the account owner.</li></ol></template>
+          </article>
+        </div>
+        <p class="empty" id="uc-empty" hidden>No use cases in this filter yet.</p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="route" data-route="about" data-title="About" aria-label="About" hidden>
+      <div class="page-hero wrap">
+        <p class="kicker">About</p>
+        <h1>Our <span class="grad-text">mission</span></h1>
+        <p class="lead lead--xl">Make building with autonomous AI agents as simple and reliable as building a web app — in the open.</p>
+      </div>
+      <div class="wrap">
+        <div class="sec-head reveal"><p class="kicker">Values</p><h2>What we hold ourselves to.</h2></div>
+        <div class="grid grid--3">
+          <article class="card tilt reveal"><div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.5 2.5 2.5 13.5 0 16M12 4c-2.5 2.5-2.5 13.5 0 16"/></svg></div><h3>Open by default</h3><p>The code, the roadmap and the decisions happen in public.</p></article>
+          <article class="card tilt reveal"><div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg></div><h3>Developer first</h3><p>Small APIs, clear errors, good docs. If it's awkward to use, it's a bug.</p></article>
+          <article class="card tilt reveal"><div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></div><h3>Built to scale</h3><p>The flow you prototype on a laptop should be the flow you run in production.</p></article>
+        </div>
+
+        <div class="sec-head reveal"><p class="kicker">Founder</p><h2>Who's building it.</h2></div>
+        <article class="founder card reveal">
+          <div class="avatar" aria-hidden="true"><span>AV</span></div>
+          <div class="founder__body">
+            <h3>Amith Viswas Reddy Dwarampudi</h3>
+            <p class="founder__role">Founder</p>
+            <ul class="tags">
+              <li>Web development (HTML/CSS/JS, Django, Next.js/React)</li>
+              <li>Tableau</li>
+              <li>UiPath RPA certified</li>
+              <li>Salesforce trained</li>
+            </ul>
+            <p class="founder__lang">Speaks English, Hindi, Japanese and Telugu.</p>
+            <a class="btn btn--primary" href="https://www.linkedin.com/in/amith-viswas-reddy" target="_blank" rel="noopener">Connect on LinkedIn <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="route" data-route="roadmap" data-title="Roadmap" aria-label="Roadmap" hidden>
+      <div class="page-hero wrap">
+        <p class="kicker">Roadmap</p>
+        <h1>Where NeuralFlow <span class="grad-text">is headed.</span></h1>
+        <p class="lead">Honest stages, no dates we can't keep.</p>
+      </div>
+      <div class="wrap">
+        <ol class="tl">
+          <li class="tl__item is-now reveal"><span class="tl__dot"></span><div class="card"><p class="tl__when">Now <span class="live">In progress</span></p><h3>Core framework in active development</h3><p>Flows, agents, tools and pipelines: the core API is being built and tested.</p></div></li>
+          <li class="tl__item reveal"><span class="tl__dot"></span><div class="card"><p class="tl__when">Next</p><h3>Public open-source release + documentation</h3><p>The repository goes public with guides, examples and an API reference.</p></div></li>
+          <li class="tl__item reveal"><span class="tl__dot"></span><div class="card"><p class="tl__when">Later</p><h3>Community plugin marketplace</h3><p>A place to find and share plugins for tools, providers and integrations.</p></div></li>
+          <li class="tl__item reveal"><span class="tl__dot"></span><div class="card"><p class="tl__when">Future</p><h3>Hosted tooling &amp; dashboard</h3><p>Optional hosted tools to run, trace and manage flows from one dashboard.</p></div></li>
+        </ol>
+
+        <div class="sec-head reveal"><p class="kicker">FAQ</p><h2>Questions, answered.</h2></div>
+        <div class="faq">
+          <div class="faq__item reveal"><h3><button class="faq__q" type="button" aria-expanded="false">Is NeuralFlow free?<span class="faq__ic" aria-hidden="true"></span></button></h3><div class="faq__a"><div><p>Yes. NeuralFlow is open source and free to use.</p></div></div></div>
+          <div class="faq__item reveal"><h3><button class="faq__q" type="button" aria-expanded="false">Which LLMs does it support?<span class="faq__ic" aria-hidden="true"></span></button></h3><div class="faq__a"><div><p>It's designed to be model-agnostic, so you can plug in the provider or local model you prefer.</p></div></div></div>
+          <div class="faq__item reveal"><h3><button class="faq__q" type="button" aria-expanded="false">When is the public release?<span class="faq__ic" aria-hidden="true"></span></button></h3><div class="faq__a"><div><p>Follow the roadmap above, or <a href="#/contact">join early access</a> to hear first.</p></div></div></div>
+          <div class="faq__item reveal"><h3><button class="faq__q" type="button" aria-expanded="false">Can I contribute?<span class="faq__ic" aria-hidden="true"></span></button></h3><div class="faq__a"><div><p>Yes. Community contributions are welcome once the repository is public.</p></div></div></div>
+          <div class="faq__item reveal"><h3><button class="faq__q" type="button" aria-expanded="false">How do I get early access?<span class="faq__ic" aria-hidden="true"></span></button></h3><div class="faq__a"><div><p>Use the <a href="#/contact">contact page</a> to request it.</p></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="route" data-route="contact" data-title="Contact" aria-label="Contact" hidden>
+      <div class="page-hero wrap">
+        <p class="kicker">Contact</p>
+        <h1>Get <span class="grad-text">early access.</span></h1>
+        <p class="lead">Tell us what you'd build. We'll be in touch as the release gets closer.</p>
+      </div>
+      <div class="wrap contact">
+        <form class="form card reveal" id="access-form" novalidate>
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="e-name" />
+            <p class="field__err" id="e-name" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email" />
+            <p class="field__err" id="e-email" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="f-role">Role</label>
+            <select id="f-role" name="role" required aria-describedby="e-role">
+              <option value="">Choose a role</option>
+              <option>Developer</option><option>Founder</option><option>Investor</option><option>Other</option>
+            </select>
+            <p class="field__err" id="e-role" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="f-msg">Message</label>
+            <textarea id="f-msg" name="message" rows="5" required aria-describedby="e-msg" placeholder="What would you like to build with NeuralFlow?"></textarea>
+            <p class="field__err" id="e-msg" aria-live="polite"></p>
+          </div>
+          <button class="btn btn--primary btn--lg btn--block" type="submit">Request early access</button>
+          <p class="form__note">Opens your email app with the details filled in.</p>
+        </form>
+        <div class="contact__side">
+          <article class="card tilt reveal">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg></div>
+            <h3>Email</h3>
+            <p><a class="plain" href="mailto:contact@neuralflow.eu.org">contact@neuralflow.eu.org</a></p>
+            <button class="btn btn--ghost btn--sm" type="button" data-copy="contact@neuralflow.eu.org" data-copy-msg="Email copied!">Copy email</button>
+          </article>
+          <article class="card tilt reveal">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10v6M8 7.5v.01M12 16v-6M12 12.5c0-1.5 1-2.5 2.3-2.5S16 11 16 12.5V16"/></svg></div>
+            <h3>LinkedIn</h3>
+            <p>Follow the founder for build updates.</p>
+            <a class="btn btn--ghost btn--sm" href="https://www.linkedin.com/in/amith-viswas-reddy" target="_blank" rel="noopener">Open LinkedIn <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__inner">
+      <div class="foot__brand">
+        <a class="logo" href="#/home" aria-label="NeuralFlow home">
+          <span class="logo__mark"><svg viewBox="0 0 32 32" aria-hidden="true"><use href="#nf-logo" /></svg></span>
+          <span class="logo__word">NeuralFlow</span>
+        </a>
+        <p>Open-source infrastructure for AI agent workflows.</p>
+      </div>
+      <nav class="foot__links" aria-label="Footer">
+        <a href="#/home">Home</a><a href="#/product">Product</a><a href="#/use-cases">Use cases</a><a href="#/about">About</a><a href="#/roadmap">Roadmap</a><a href="#/contact">Contact</a>
+      </nav>
+      <p class="foot__copy">© 2026 NeuralFlow · neural-flow.dev</p>
+    </div>
+  </footer>
+
+  <button class="to-top" id="to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal__x icon-btn" type="button" data-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      <p class="kicker" id="modal-cat"></p>
+      <h2 id="modal-title"></h2>
+      <p class="modal__desc" id="modal-desc"></p>
+      <h3 class="modal__sub">Example workflow</h3>
+      <div id="modal-body"></div>
+      <div class="btn-row"><a class="btn btn--primary" href="#/contact" data-close>Build this with early access</a></div>
+    </div>
+  </div>
+
+  <div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+  <script src="neuralflow.js"></script>
+</body>
 </html>
