@@ -12,6 +12,12 @@
     />
     <link rel="stylesheet" href="hark.css" />
     <link rel="stylesheet" href="hark-hero.css" />
+    <style>
+      /* Fill wide screens: hero spans the viewport (minus the gutter), sections and footer cap at 1600px. */
+      :root { --page-max: 100%; }
+      .main > .section,
+      .page > .foot { width: 100%; max-width: min(1600px, 100%); margin-inline: auto; }
+    </style>
   </head>
   <body>
     <div class="page" id="top">
@@ -26,7 +32,7 @@
             <p class="hero__meta">neural-flow.dev · For developers, early adopters and partners</p>
           </div>
           <aside class="callout" aria-label="Next step">
-            <p class="callout__head"><span class="hark-mark" data-size="16"></span> Next step</p>
+            <p class="callout__head">Next step</p>
             <p class="callout__lead"><strong>Building with agents?</strong> Talk to us about early access or partnering.</p>
             <div class="links">
               <a class="btn" href="mailto:contact@neuralflow.eu.org">Get in touch</a>
@@ -187,7 +193,6 @@
       <footer class="foot">
         <p>© 2026 NeuralFlow · neural-flow.dev</p>
         <nav aria-label="Back to sections" data-auto></nav>
-        <a class="badge" href="https://hark.com/" target="_blank" rel="noopener"><span class="hark-mark"></span><span>built by hark</span></a>
       </footer>
     </div>
     <script src="hark.js"></script>
