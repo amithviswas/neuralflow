@@ -1,4 +1,3 @@
-/* NeuralFlow — site behaviour (vanilla JS) */
 (function (start) {
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
   else start();
@@ -10,7 +9,6 @@
   var motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   var reduced = function () { return motionQuery.matches; };
 
-  /* ---------- toast ---------- */
   var toastBox = $("#toasts");
   function toast(msg) {
     if (!toastBox) return;
@@ -25,7 +23,6 @@
     }, 2600);
   }
 
-  /* ---------- ripple ---------- */
   document.addEventListener("click", function (e) {
     var b = e.target.closest(".btn, .copy-btn, .fchip");
     if (!b || reduced()) return;
@@ -42,7 +39,6 @@
     setTimeout(function () { if (s.parentNode) s.parentNode.removeChild(s); }, 650);
   });
 
-  /* ---------- clipboard ---------- */
   function copyText(text, msg) {
     function fallback() {
       var ta = document.createElement("textarea");
@@ -75,7 +71,6 @@
     b.addEventListener("click", function () { copyText(b.getAttribute("data-copy"), b.getAttribute("data-copy-msg") || "Copied!"); });
   });
 
-  /* ---------- scroll reveal ---------- */
   var revealObs = null;
   if ("IntersectionObserver" in window) {
     revealObs = new IntersectionObserver(function (entries) {
@@ -95,7 +90,6 @@
     });
   }
 
-  /* ---------- counters ---------- */
   var countersDone = false;
   function runCounters() {
     if (countersDone) return;
@@ -132,7 +126,6 @@
     } else runCounters();
   }
 
-  /* ---------- router ---------- */
   var ROUTES = ["home", "product", "use-cases", "about", "roadmap", "contact"];
   var current = null;
   function routeFromHash() {
@@ -187,7 +180,6 @@
     $("#main").focus();
   });
 
-  /* ---------- mobile menu ---------- */
   var burger = $("#burger"), links = $("#nav-links"), scrim = $("#scrim");
   function openMenu() {
     links.classList.add("is-open");
@@ -211,44 +203,24 @@
   links.addEventListener("click", function (e) { if (e.target.closest("a")) closeMenu(); });
   window.addEventListener("resize", function () { if (window.innerWidth > 900) closeMenu(); });
 
-  /* ---------- theme ---------- */
-  var themeBtn = $("#theme-btn"), themePop = $("#theme-pop");
-  var THEME_COLORS = { aurora: "#0B1020", sunset: "#170A14", mint: "#F6FAF8", neon: "#07070A" };
+  var themeBtn = $("#theme-btn");
+  var THEME_COLORS = { mint: "#F6FAF8", dark: "#0B1020" };
   function setTheme(name, announce) {
-    if (!THEME_COLORS[name]) name = "aurora";
+    if (!THEME_COLORS[name]) name = "mint";
     document.documentElement.setAttribute("data-theme", name);
-    $$(".swatch").forEach(function (s) { s.setAttribute("aria-checked", String(s.getAttribute("data-theme-set") === name)); });
+    themeBtn.setAttribute("aria-pressed", String(name === "dark"));
     var meta = $('meta[name="theme-color"]');
     if (meta) meta.setAttribute("content", THEME_COLORS[name]);
-    try { localStorage.setItem("nf-theme", name); } catch (e) { /* storage unavailable */ }
-    if (announce) toast("Theme: " + name.charAt(0).toUpperCase() + name.slice(1));
+    try { localStorage.setItem("nf-theme", name); } catch (e) {}
+    if (announce) toast(name === "dark" ? "Theme: Dark" : "Theme: Mint");
   }
-  function togglePop(open) {
-    themePop.hidden = !open;
-    themeBtn.setAttribute("aria-expanded", String(open));
-    if (open) { var sel = $('.swatch[aria-checked="true"]') || $(".swatch"); sel.focus(); }
-  }
-  themeBtn.addEventListener("click", function (e) { e.stopPropagation(); togglePop(themePop.hidden); });
-  $$(".swatch").forEach(function (s) {
-    s.addEventListener("click", function () {
-      setTheme(s.getAttribute("data-theme-set"), true);
-      togglePop(false);
-      themeBtn.focus();
-    });
+  themeBtn.addEventListener("click", function () {
+    setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "mint" : "dark", true);
   });
-  themePop.addEventListener("keydown", function (e) {
-    var items = $$(".swatch"), i = items.indexOf(document.activeElement);
-    if (e.key === "ArrowDown") { e.preventDefault(); items[(i + 1) % items.length].focus(); }
-    if (e.key === "ArrowUp") { e.preventDefault(); items[(i - 1 + items.length) % items.length].focus(); }
-  });
-  document.addEventListener("click", function (e) {
-    if (!themePop.hidden && !e.target.closest(".theme")) togglePop(false);
-  });
-  var saved = "aurora";
-  try { saved = localStorage.getItem("nf-theme") || "aurora"; } catch (e) { saved = "aurora"; }
+  var saved = "mint";
+  try { saved = localStorage.getItem("nf-theme") || "mint"; } catch (e) {}
   setTheme(saved, false);
 
-  /* ---------- nav state & back to top ---------- */
   var nav = $("#nav"), toTop = $("#to-top");
   function onScroll() {
     var y = window.scrollY;
@@ -258,7 +230,6 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: reduced() ? "auto" : "smooth" }); });
 
-  /* ---------- hero glow ---------- */
   var hero = $("#hero");
   if (hero) hero.addEventListener("pointermove", function (e) {
     if (reduced()) return;
@@ -267,7 +238,6 @@
     hero.style.setProperty("--my", e.clientY - r.top + "px");
   });
 
-  /* ---------- typewriter ---------- */
   var typer = $("#typer");
   if (typer) {
     var words = ["agents", "pipelines", "workflows", "copilots"], wi = 0, ci = words[0].length, deleting = true;
@@ -291,7 +261,6 @@
     }
   }
 
-  /* ---------- card tilt ---------- */
   var fine = window.matchMedia("(hover: hover) and (pointer: fine)");
   $$(".tilt").forEach(function (card) {
     card.addEventListener("pointermove", function (e) {
@@ -307,7 +276,6 @@
     });
   });
 
-  /* ---------- flow builder ---------- */
   var runBtn = $("#run-flow"), resetBtn = $("#reset-flow"), log = $("#console-log");
   var timers = [];
   var STEPS = [
@@ -372,7 +340,6 @@
     resetBtn.addEventListener("click", function () { resetFlow(false); });
   }
 
-  /* ---------- tabs ---------- */
   var tabs = $$('[role="tab"]'), ink = $(".tabs__ink");
   function moveInk() {
     var sel = $('[role="tab"][aria-selected="true"]');
@@ -403,7 +370,6 @@
   });
   window.addEventListener("resize", moveInk);
 
-  /* ---------- use-case filters ---------- */
   var chips = $$(".fchip"), ucs = $$(".uc"), empty = $("#uc-empty");
   chips.forEach(function (c) {
     c.addEventListener("click", function () {
@@ -428,7 +394,6 @@
     });
   });
 
-  /* ---------- modal ---------- */
   var modal = $("#modal"), lastFocus = null;
   function openModal(card) {
     lastFocus = document.activeElement;
@@ -460,15 +425,12 @@
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
-  /* ---------- global Esc ---------- */
   document.addEventListener("keydown", function (e) {
     if (e.key !== "Escape") return;
     if (!modal.hidden) { closeModal(); return; }
-    if (!themePop.hidden) { togglePop(false); themeBtn.focus(); return; }
     if (links.classList.contains("is-open")) { closeMenu(); burger.focus(); }
   });
 
-  /* ---------- FAQ ---------- */
   $$(".faq__q").forEach(function (q) {
     var panel = q.closest(".faq__item").querySelector(".faq__a");
     q.addEventListener("click", function () {
@@ -491,7 +453,6 @@
     });
   });
 
-  /* ---------- contact form ---------- */
   var form = $("#access-form");
   if (form) {
     var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -530,7 +491,6 @@
     });
   }
 
-  /* ---------- start ---------- */
   render();
   onScroll();
 });
