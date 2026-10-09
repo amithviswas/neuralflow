@@ -1,25 +1,195 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NeuralFlow - Open Source AI Infrastructure</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-900 text-white min-h-screen flex flex-col justify-center items-center p-6 text-center">
-  <h1 class="text-5xl font-extrabold mb-4 bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
-    NeuralFlow AI
-  </h1>
-  <p class="text-lg text-slate-300 max-w-xl mb-8">
-    An open-source, high-performance developer framework built for orchestrating autonomous AI agent workflows and LLM pipelines.
-  </p>
-  <div class="flex gap-4">
-    <a href="https://github.com/yourusername/neuralflow" class="bg-indigo-600 hover:bg-indigo-700 px-6 py-3 rounded-lg font-medium transition">
-      View on GitHub
-    </a>
-    <a href="mailto:contact@neuralflow.eu.org" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 px-6 py-3 rounded-lg font-medium transition">
-      Contact Us
-    </a>
-  </div>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NeuralFlow — Open-source infrastructure for AI agent workflows</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap"
+    />
+    <link rel="stylesheet" href="hark.css" />
+    <link rel="stylesheet" href="hark-hero.css" />
+  </head>
+  <body>
+    <div class="page" id="top">
+      <header class="nav glass" data-auto></header>
+      <main class="main">
+        <section class="hero">
+          <img class="hero__img" src="neuralflow-hero.jpg" alt="Glowing streams of data flowing through an abstract neural network" />
+          <div class="hero__copy">
+            <p class="hero__eyebrow">NeuralFlow · Open source</p>
+            <h1>Orchestrate AI agents. Ship LLM pipelines that flow.</h1>
+            <p class="hero__sub">An open-source, high-performance framework for building, chaining and running autonomous AI agent workflows.</p>
+            <p class="hero__meta">neural-flow.dev · For developers, early adopters and partners</p>
+          </div>
+          <aside class="callout" aria-label="Next step">
+            <p class="callout__head"><span class="hark-mark" data-size="16"></span> Next step</p>
+            <p class="callout__lead"><strong>Building with agents?</strong> Talk to us about early access or partnering.</p>
+            <div class="links">
+              <a class="btn" href="mailto:contact@neuralflow.eu.org">Get in touch</a>
+              <a class="btn" href="https://www.linkedin.com/in/amith-viswas-reddy" target="_blank" rel="noopener">Connect with the founder</a>
+            </div>
+          </aside>
+        </section>
+
+        <section class="section" id="what" data-nav="What we do">
+          <div class="head">
+            <p class="head__eyebrow">What we do</p>
+            <h2>One framework for agents, pipelines and the code behind them.</h2>
+          </div>
+          <div class="cards">
+            <div>
+              <h3>Agent orchestration</h3>
+              <p>Define multi-agent workflows where agents plan, hand off tasks and call tools.</p>
+            </div>
+            <div>
+              <h3>LLM pipelines</h3>
+              <p>Chain prompts, retrieval and model calls into reliable, repeatable pipelines.</p>
+            </div>
+            <div>
+              <h3>Open source first</h3>
+              <p>Transparent code, community-driven, no lock-in to any single model provider.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="why" data-nav="Why">
+          <div class="head">
+            <p class="head__eyebrow">Why NeuralFlow</p>
+            <h2>Fast, open and easy to see inside.</h2>
+          </div>
+          <div class="cards">
+            <div>
+              <h3>Built for performance</h3>
+              <p>High-throughput orchestration for agent workflows in production.</p>
+            </div>
+            <div>
+              <h3>Model-agnostic</h3>
+              <p>Works with any major LLM provider.</p>
+            </div>
+            <div>
+              <h3>Developer-friendly</h3>
+              <p>A Python/JavaScript-style API that feels familiar from day one.</p>
+            </div>
+            <div>
+              <h3>Observability built in</h3>
+              <p>Trace each step of a workflow.</p>
+            </div>
+            <div>
+              <h3>Extensible</h3>
+              <p>Add plugins and custom tools.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="how" data-nav="How it works">
+          <div class="head">
+            <p class="head__eyebrow">How it works</p>
+            <h2>Three steps from idea to running workflow.</h2>
+          </div>
+          <div class="steps">
+            <article class="step">
+              <div class="step__intro"><p class="step__num">01</p><p class="step__eyebrow">Define</p></div>
+              <div><h3>Define your agents and tools</h3><p>Describe what each agent does and which tools it can call.</p></div>
+            </article>
+            <article class="step">
+              <div class="step__intro"><p class="step__num">02</p><p class="step__eyebrow">Connect</p></div>
+              <div><h3>Connect them into a flow</h3><p>Wire agents, prompts and retrieval into one pipeline.</p></div>
+            </article>
+            <article class="step">
+              <div class="step__intro"><p class="step__num">03</p><p class="step__eyebrow">Run</p></div>
+              <div><h3>Run, monitor and iterate</h3><p>Trace every step, find what to improve, and ship again.</p></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="use-cases" data-nav="Use cases">
+          <div class="head">
+            <p class="head__eyebrow">Use cases</p>
+            <h2>Where agent workflows pay off.</h2>
+          </div>
+          <div class="cards">
+            <div><h3>Customer support</h3><p>Customer support automation.</p></div>
+            <div><h3>Research assistants</h3><p>Research and document analysis assistants.</p></div>
+            <div><h3>Process automation</h3><p>RPA-style business process automation with AI.</p></div>
+            <div><h3>Developer copilots</h3><p>Internal developer copilots.</p></div>
+          </div>
+        </section>
+
+        <section class="section" id="founder" data-nav="Founder">
+          <div class="head">
+            <p class="head__eyebrow">Founder</p>
+            <h2>Amith Viswas Reddy Dwarampudi</h2>
+            <p class="head__sub">Founder, NeuralFlow</p>
+          </div>
+          <div class="pair">
+            <div class="cards">
+              <div>
+                <h3>Background</h3>
+                <ul>
+                  <li>Web development: HTML/CSS/JavaScript, Django, Next.js/React</li>
+                  <li>Data visualisation with Tableau</li>
+                  <li>UiPath RPA certified</li>
+                  <li>Salesforce trained</li>
+                </ul>
+              </div>
+            </div>
+            <div class="cards">
+              <div>
+                <h3>Languages</h3>
+                <p><span class="pill">English</span> <span class="pill">Hindi</span> <span class="pill">Japanese</span> <span class="pill">Telugu</span></p>
+                <div class="links">
+                  <a class="btn" href="https://www.linkedin.com/in/amith-viswas-reddy" target="_blank" rel="noopener">LinkedIn</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="roadmap" data-nav="Roadmap">
+          <div class="head">
+            <p class="head__eyebrow">Status</p>
+            <h2>Early days, building the core.</h2>
+          </div>
+          <ol class="timeline">
+            <li class="is-current">
+              <p class="timeline__when">Now</p>
+              <div class="timeline__what">Early development and building the core framework.</div>
+              <p><span class="chip chip--solid">In progress</span></p>
+            </li>
+            <li>
+              <p class="timeline__when">Next</p>
+              <div class="timeline__what">Public open-source release and documentation.</div>
+            </li>
+            <li>
+              <p class="timeline__when">Later</p>
+              <div class="timeline__what">Community plugins and hosted tooling.</div>
+            </li>
+          </ol>
+        </section>
+
+        <section class="section" id="contact" data-nav="Contact">
+          <div class="head">
+            <h2>Want early access or to collaborate?</h2>
+          </div>
+          <aside class="callout" aria-label="Contact">
+            <p class="callout__lead"><strong>Email us</strong> at <a class="link" href="mailto:contact@neuralflow.eu.org">contact@neuralflow.eu.org</a>, or connect with the founder on LinkedIn.</p>
+            <div class="links">
+              <a class="btn" href="mailto:contact@neuralflow.eu.org">Get in touch</a>
+              <a class="btn" href="https://www.linkedin.com/in/amith-viswas-reddy" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+          </aside>
+        </section>
+      </main>
+      <footer class="foot">
+        <p>© 2026 NeuralFlow · neural-flow.dev</p>
+        <nav aria-label="Back to sections" data-auto></nav>
+        <a class="badge" href="https://hark.com/" target="_blank" rel="noopener"><span class="hark-mark"></span><span>built by hark</span></a>
+      </footer>
+    </div>
+    <script src="hark.js"></script>
+  </body>
 </html>
